@@ -1,0 +1,2 @@
+# AviUtl_Kaleidoscope_K_Script
+画像を万華鏡風に加工する，GLSLを用いたAviUtl用スクリプト
