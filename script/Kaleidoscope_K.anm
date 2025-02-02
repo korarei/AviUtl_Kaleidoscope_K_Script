@@ -1,0 +1,35 @@
+--track0:CX,-4000,4000,0,0.01
+--track1:CY,-4000,4000,0,0.01
+--track2:Size,0.01,800,100,0.01
+--track3:Rotation,-1440,1440,0,0.01
+--check0:Floating Center,0
+--dialog:*Mirroring,_1=1;Scale,_2=100;Reload/chk,_3=0;PI,_0=nil
+
+-- rikky_moduleがあればリスト表示
+local is_rikky_mod_loaded, R = pcall(require, "rikky_module")
+if is_rikky_mod_loaded then
+    local mirroring_list = {"Unfold", "Wheel", "Fish Head", "Can Meas", "Flip Flop", "Flower", "Dia Cross", "Flipper", "Starlish", "Tiler"}
+    R.list(1, mirroring_list)
+end
+
+obj.setanchor("track", 0, "line") -- track0, track1をアンカーで指定可能にする
+
+-- パラメータの取得
+_0 = _0 or {} -- パラメータインジェクション
+local center_x = tonumber(_0[1]) or obj.track0
+local center_y = tonumber(_0[2]) or obj.track1
+local size = tonumber(_0[3]) or obj.track2
+local rotation = tonumber(_0[4]) or obj.track3
+local floating_center = obj.check0
+if type(_0[5]) == "boolean" then
+    floating_center = _0[5]
+elseif type(_0[5]) == "number" then
+    floating_center = _0[5] == 1
+end
+local mirroring = _1 _1 = nil
+local scale =_2 _2 = nil
+local reload = _3 == 1 _3 = nil
+_0 = nil
+
+local Kaleidoscope_K = require("Kaleidoscope_K")
+Kaleidoscope_K.kaleidoscope(center_x, center_y, size, rotation, floating_center, mirroring, scale, reload)
