@@ -100,26 +100,37 @@ void main() {
     vec2 rel_pos = (TexCoord * resolution - pivot - (floating_center != 0 ? offset: vec2(0.0))) / scale; // 原点を画像中心にする. TexCoord * resolutionはx:[0,w], y:[0,h]であることに注意
     // パターンごとに計算を行う
     vec2 local_pos;
-    if (mirroring == 1) {
-        local_pos = mirror(rel_pos, vec2(-tile_size));
-    } else if (mirroring == 2) {
-        local_pos = wheel(rel_pos, -tile_size);
-    } else if (mirroring == 3) {
-        local_pos = fish_head(rel_pos, -tile_size);
-    } else if (mirroring == 4) {
-        local_pos = can_meas(rel_pos, -tile_size);
-    } else if (mirroring == 5) {
-        local_pos = flip_flop(rel_pos, -tile_size);
-    } else if (mirroring == 6) {
-        local_pos = flower(rel_pos, -tile_size);
-    } else if (mirroring == 7) {
-        local_pos = dia_cross(rel_pos, -tile_size);
-    } else if (mirroring == 8) {
-        local_pos = flipper(rel_pos, -tile_size);
-    } else if (mirroring == 9) {
-        local_pos = starlish(rel_pos, -tile_size);
-    } else { // ここがtiler的な動作を行う
-        local_pos = rel_pos;
+    switch (mirroring) {
+        case 1:
+            local_pos = mirror(rel_pos, vec2(-tile_size));
+            break;
+        case 2:
+            local_pos = wheel(rel_pos, -tile_size);
+            break;
+        case 3:
+            local_pos = fish_head(rel_pos, -tile_size);
+            break;
+        case 4:
+            local_pos = can_meas(rel_pos, -tile_size);
+            break;
+        case 5:
+            local_pos = flip_flop(rel_pos, -tile_size);
+            break;
+        case 6:
+            local_pos = flower(rel_pos, -tile_size);
+            break;
+        case 7:
+            local_pos = dia_cross(rel_pos, -tile_size);
+            break;
+        case 8:
+            local_pos = flipper(rel_pos, -tile_size);
+            break;
+        case 9:
+            local_pos = starlish(rel_pos, -tile_size);
+            break;
+        default:
+            local_pos = rel_pos;
+            break;
     }
     local_pos = rot_mat * local_pos; // 回転行列をかける(非可換) 転置なら *= rot_mat でも可
     vec2 src_pos = mirror(local_pos + pivot + offset, resolution); // 中心を左上に戻す

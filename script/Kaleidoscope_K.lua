@@ -7,7 +7,7 @@ local function error_handler(is_succeeded, func_name, error_mes) -- isSucceeded:
         obj.load("text", "["..func_name.."]\n"..error_mes)
         obj.draw()
         local RED = "\27[31m"
-        local RESET = "\27[0m"
+        local RESET = "\27[0m\n"
         io.stderr:write(RED .. "[" .. func_name .. "]" .. error_mes .. RESET)
     end
 end
