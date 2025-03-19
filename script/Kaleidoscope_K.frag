@@ -87,7 +87,7 @@ vec2 flipper(in vec2 value, in float range) {
     return result;
 }
 
-vec2 starlish(in vec2 value, in float range) { // 未完成
+vec2 starlish(in vec2 value, in float range) {
     vec2 unfold = mirror(value, vec2(range));
     vec2 flower_0 = flower(value, range);
     vec2 flower_45 = mix(rot_mat_45 * unfold.yx, rot_mat_45 * unfold, step(unfold.x, unfold.y));
