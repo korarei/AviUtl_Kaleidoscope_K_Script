@@ -4,6 +4,8 @@
 
 [Download](https://github.com/korarei/AviUtl_Kaleidoscope_K_Script/releases)
 
+[AviUtl2向けDownload](https://github.com/korarei/AviUtl2_Kaleidoscope_K_Script)
+
 
 ## はじめに
 
